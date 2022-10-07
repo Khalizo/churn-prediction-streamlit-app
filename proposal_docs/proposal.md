@@ -6,20 +6,49 @@ Proposal
 
 Babs Khalidson, 5th October, 2022
 
-The project is a Kaggle competition, [Customer Churn Prediction 2020](https://www.kaggle.com/competitions/customer-churn-prediction-2020/overview)
-
 ## Domain Background
 
-This competition is about predicting whether a customer will change telecommunications provider, something known as `churning`.
+
+### Introduction 
+
+The telecommunications sector has become one of the main industries in developed countries. The technical progress and the increasing number of operators globallly, has made the industry competititive[1]. Companies are working hard to survive in this competitive market depending on multiple strategies.
+
+There are often three main strategies for generating more revenue within a business [2]: 
+1) Acquiring new customers
+2) Upselling existing customers 
+3) Increase the retention period of customers
+
+However, comparing these strategies taking the value of return on investment (RoI) of each into account has shown that the third strategy is the most profitable strategy. 
+Reason being is that retaining an existing customer costs much lower than acquiring a new one, in addition to being considered much easier than the upselling strategy. 
+To apply the third strategy, we need to decrease the potential of customer’s churn by putting systems in place to do so. Hence why exploring machine learning techniques for predicting customer churn can provide huge finanical benefit to companies. 
+
+### Related work
+Many approaches were applied to predict churn in telecom companies. Most of these approaches have used machine learning and data mining. The majority of related work focused on applying only one method of data mining to extract knowledge, and the others focused on comparing several strategies to predict churn.
+
+Gavril et al. [3] presented an advanced methodology of data mining to predict churn for prepaid customers using dataset for call details of 3333 customers with 21 features, and a dependent churn parameter with two values: Yes/No. The author used AUC to measure the performance of the algorithms. The AUC values were 99.10%, 99.55% and 99.70% for Bayes Networks, Neural networks and support vector machine, respectively.
+
+He et al. [4] proposed a model for prediction based on the Neural Network algorithm in order to solve the problem of customer churn in a large Chinese telecom company which contains about 5.23 million customers. The prediction accuracy standard was the overall accuracy rate, and reached 91.1%.
+
+Idris [5] proposed an approach based on genetic programming with AdaBoost to model the churn problem in telecommunications. The model was tested on two standard data sets. One by Orange Telecom and the other by cell2cell, with 89% accuracy for the cell2cell dataset and 63% for the other one.
+
+Huang et al. [6] studied the problem of customer churn in the big data platform. The goal of the researchers was to prove that big data greatly enhance the process of predicting the churn depending on the volume, variety, and velocity of the data. Dealing with data from the Operation Support department and Business Support department at China’s largest telecommunications company needed a big data platform to engineer the fractures. Random Forest algorithm was used and evaluated using AUC.
+
+Ahmad et al. [7] investigated the churn problem by developing a model using machine learning technques on a big data platform and builds a new way of features' engineering and selection. Their study measured the performance of the model using the AUC and obtained an AUC value of 93.3% after applying the XGBOOST algorithm.
+
+Lalwani et al. [8] tacked the churn prediction problem by using a gravitational search algorithm for feature selection while several machine leanrning models were applied, namely, logistic regression, naive bayes, support vector machine, random forest, decision trees. The highest AUC score of 84% was achieved by both Adaboost and XGboost classifiers.
+
 
 ## Problem Statement
 
-Customer churn is a common problem for businesses that provide subscription services. It is often difficult to determine when exactly a customer is likely to churn, due to the fact
-that it could be caused by several reasons.
+Customer churn is a major problem and one of the most important concerns for large companies. Due to the impact customer churn has on the revenues of companies it is important to develop means to predict customer churn.
+
+Customer churn is a common problem for businesses that provide subscription services. It is often difficult to determine when exactly a customer is likely to churn, due to the fact that it could be caused by several reasons.
 
 The challenge is to predict whether a customer will churn or not using 19 input features defined in the dataset. The accuracy of the model will be the main metric for determining its success.
 
 ## Datasets and Inputs
+
+This project was inspired by the kaggle , [Customer Churn Prediction 2020](https://www.kaggle.com/competitions/customer-churn-prediction-2020/overview)
 
 The training dataset contains 4250 samples. Each sample contains 19 features and 1 boolean variable `churn` which indicates the class of the sample. The 19 input features and 1 target variable are:
 
@@ -86,3 +115,15 @@ The workflow for approaching a solution:
 6. `Deployment`: deploy the trained model to an AWS endpoint
 7. `Lambda & Step Functions`: set up a AWS Lambda & Step Function for calling the deployed model.
 8. `Web App`: Create a web app by deploying the model on streamlit or flask.
+
+
+## References
+
+1. Gerpott TJ, Rams W, Schindler A. Customer retention, loyalty, and satisfaction in the German mobile cellular telecommunications market. Telecommun Policy. 2001;25:249–69
+2. Wei CP, Chiu IT. Turning telecommunications call details to churn prediction: a data mining approach. Expert Syst Appl. 2002;23(2):103–12.
+3. Brandusoiu I, Toderean G, Ha B. Methods for churn prediction in the prepaid mobile telecommunications industry. In: International conference on communications. 2016. p. 97–100.
+4. He Y, He Z, Zhang D. A study on prediction of customer churn in fixed communication network based on data mining. In: Sixth international conference on fuzzy systems and knowledge discovery, vol. 1. 2009. p. 92–4.
+5. Idris A, Khan A, Lee YS. Genetic programming and adaboosting based churn prediction for telecom. In: IEEE international conference on systems, man, and cybernetics (SMC). 2012. p. 1328–32.
+6. Bingquan Huang, Mohand Tahar Kechadi, Brian Buckley, Customer churn prediction in telecommunications, Expert Systems with Applications, Volume 39, Issue 1,2012, Pages 1414-1425,
+7. Ahmad, A.K., Jafar, A. & Aljoumaa, K. Customer churn prediction in telecom using machine learning in big data platform. J Big Data 6, 28 (2019)
+8. Lalwani, P., Mishra, M.K., Chadha, J.S. et al. Customer churn prediction system: a machine learning approach. Computing 104, 271–294 (2022)

@@ -1,0 +1,11 @@
+Bingquan Huang, Mohand Tahar Kechadi, Brian Buckley,
+Customer churn prediction in telecommunications,
+Expert Systems with Applications,
+Volume 39, Issue 1,
+2012,
+Pages 1414-1425,
+ISSN 0957-4174,
+https://doi.org/10.1016/j.eswa.2011.08.024.
+(https://www.sciencedirect.com/science/article/pii/S0957417411011353)
+Abstract: This paper presents a new set of features for land-line customer churn prediction, including 2 six-month Henley segmentation, precise 4-month call details, line information, bill and payment information, account information, demographic profiles, service orders, complain information, etc. Then the seven prediction techniques (Logistic Regressions, Linear Classifications, Naive Bayes, Decision Trees, Multilayer Perceptron Neural Networks, Support Vector Machines and the Evolutionary Data Mining Algorithm) are applied in customer churn as predictors, based on the new features. Finally, the comparative experiments were carried out to evaluate the new feature set and the seven modelling techniques for customer churn prediction. The experimental results show that the new features with the six modelling techniques are more effective than the existing ones for customer churn prediction in the telecommunication service field.
+Keywords: Churn prediction; Imbalanced datasets; ROC and AUC techniques; Logistic Regressions; Linear Classifications; Naive Bayes; Decision Trees; Multilayer Perceptron Neural Networks; Support Vector Machines; Evolutionary Data Mining Algorithms

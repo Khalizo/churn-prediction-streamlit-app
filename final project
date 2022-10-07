@@ -1,0 +1,11 @@
+# 1. Introduction
+
+# 1.1 Project Overview 
+
+This project was inspired by a kaggle competition, [Customer Churn Prediction 2020](https://www.kaggle.com/competitions/customer-churn-prediction-2020/overview)
+
+The challenge of the kaggle competition is to build a model for predicting customer churn with a high a accuracy.
+
+# 1.2 Problem Statement
+
+Customer churn is a common problem for businesses that provide subscription services. It is often difficult to determine when exactly a customer is likely to churn, due to the fact that it could be caused by several reasons.
