@@ -4,14 +4,13 @@ Proposal
 
 # Capstone Proposal
 
-Babs Khalidson, 5th October, 2022
+Babs Khalidson, 9th October, 2022
 
 ## Domain Background
 
-
 ### Introduction 
 
-The telecommunications sector has become one of the main industries in developed countries. The technical progress and the increasing number of operators globallly, has made the industry competititive[1]. Companies are working hard to survive in this competitive market depending on multiple strategies.
+The telecommunications sector has become one of the main industries in developed countries. The technical progress and the increasing number of operators globally have made the industry competititive[1]. Companies are working hard to survive in this competitive market depending on multiple strategies.
 
 There are often three main strategies for generating more revenue within a business [2]: 
 1) Acquiring new customers
@@ -19,23 +18,23 @@ There are often three main strategies for generating more revenue within a busin
 3) Increase the retention period of customers
 
 However, comparing these strategies taking the value of return on investment (RoI) of each into account has shown that the third strategy is the most profitable strategy. 
-Reason being is that retaining an existing customer costs much lower than acquiring a new one, in addition to being considered much easier than the upselling strategy. 
-To apply the third strategy, we need to decrease the potential of customer’s churn by putting systems in place to do so. Hence why exploring machine learning techniques for predicting customer churn can provide huge finanical benefit to companies. 
+The reason being is that retaining an existing customer costs much lower than acquiring a new one, in addition to being considered much easier than the upselling strategy. 
+To apply the third strategy, we need to decrease the potential of customer churn by putting systems in place to do so. Hence why exploring machine learning techniques for predicting customer churn can provide huge financial benefits to companies. 
 
-### Related work
+### Related work
 Many approaches were applied to predict churn in telecom companies. Most of these approaches have used machine learning and data mining. The majority of related work focused on applying only one method of data mining to extract knowledge, and the others focused on comparing several strategies to predict churn.
 
-Gavril et al. [3] presented an advanced methodology of data mining to predict churn for prepaid customers using dataset for call details of 3333 customers with 21 features, and a dependent churn parameter with two values: Yes/No. The author used AUC to measure the performance of the algorithms. The AUC values were 99.10%, 99.55% and 99.70% for Bayes Networks, Neural networks and support vector machine, respectively.
+Gavril et al. [3] presented an advanced methodology of data mining to predict churn for prepaid customers using a dataset for call details of 3333 customers with 21 features, and a dependent churn parameter with two values: Yes/No. The author used AUC to measure the performance of the algorithms. The AUC values were 99.10%, 99.55% and 99.70% for Bayes Networks, Neural networks and support vector machine, respectively.
 
 He et al. [4] proposed a model for prediction based on the Neural Network algorithm in order to solve the problem of customer churn in a large Chinese telecom company which contains about 5.23 million customers. The prediction accuracy standard was the overall accuracy rate, and reached 91.1%.
 
 Idris [5] proposed an approach based on genetic programming with AdaBoost to model the churn problem in telecommunications. The model was tested on two standard data sets. One by Orange Telecom and the other by cell2cell, with 89% accuracy for the cell2cell dataset and 63% for the other one.
 
-Huang et al. [6] studied the problem of customer churn in the big data platform. The goal of the researchers was to prove that big data greatly enhance the process of predicting the churn depending on the volume, variety, and velocity of the data. Dealing with data from the Operation Support department and Business Support department at China’s largest telecommunications company needed a big data platform to engineer the fractures. Random Forest algorithm was used and evaluated using AUC.
+Huang et al. [6] studied the problem of customer churn in the big data platform. The goal of the researchers was to prove that big data greatly enhances the process of predicting churn depending on the volume, variety, and velocity of the data. Dealing with data from the Operation Support department and Business Support department at China’s largest telecommunications company needed a big data platform to engineer the fractures. Random Forest algorithm was used and evaluated using AUC.
 
-Ahmad et al. [7] investigated the churn problem by developing a model using machine learning technques on a big data platform and builds a new way of features' engineering and selection. Their study measured the performance of the model using the AUC and obtained an AUC value of 93.3% after applying the XGBOOST algorithm.
+Ahmad et al. [7] investigated the churn problem by developing a model using machine learning techniques on a big data platform and building a new way of feature engineering and selection. Their study measured the performance of the model using the AUC and obtained an AUC value of 93.3% after applying the XGBOOST algorithm.
 
-Lalwani et al. [8] tacked the churn prediction problem by using a gravitational search algorithm for feature selection while several machine leanrning models were applied, namely, logistic regression, naive bayes, support vector machine, random forest, decision trees. The highest AUC score of 84% was achieved by both Adaboost and XGboost classifiers.
+Lalwani et al. [8] tacked the churn prediction problem by using a gravitational search algorithm for feature selection while several machine learning models were applied, namely, logistic regression, naive bayes, support vector machine, random forest, decision trees. The highest AUC score of 84% was achieved by both Adaboost and XGboost classifiers.
 
 
 ## Problem Statement
@@ -48,7 +47,7 @@ The challenge is to predict whether a customer will churn or not using 19 input 
 
 ## Datasets and Inputs
 
-This project was inspired by the kaggle , [Customer Churn Prediction 2020](https://www.kaggle.com/competitions/customer-churn-prediction-2020/overview)
+This project was inspired by the kaggle, [Customer Churn Prediction 2020](https://www.kaggle.com/competitions/customer-churn-prediction-2020/overview)
 
 The training dataset contains 4250 samples. Each sample contains 19 features and 1 boolean variable `churn` which indicates the class of the sample. The 19 input features and 1 target variable are:
 
@@ -89,19 +88,37 @@ All of these files can be found in `dataset` folder within the submission:
 
 ## Solution Statement
 
-The problem is a classification problem which will require using machine learning algorithms to predict the classes.
+With the advancements in artificial intelligence, the possibility to predict customer churn has increased significantly. 
 
-In this project, I propose using AutoGluon for this supervised learning task on tabular data. With AutoGluon I plan on automating the data cleaning, feature engineering, model selection and hyperparameter tuning to find the top-performing model that would be ready for production.
+Having looked at the current literature, most research has been focused on using single estimators for making predictions. This project 
+intends on taking an alternative approach by building an ensemble voting classifier comprised of 3 models that have the highest AUC. 
+I will use AWS AutoGluon to find the top 3 models. The models that I will use are: 
+
+1. **LightGBM:** an implementation of the gradient-boosted trees algorithm that adds two novel techniques for improved efficiency and scalability: Gradient-based One-Side Sampling (GOSS) and Exclusive Feature Bundling (EFB).
+2. **CatBoost:** an implementation of the gradient-boosted trees algorithm that introduces ordered boosting and an innovative algorithm for processing categorical features.
+3. **XGBoost:** an implementation of the gradient-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models.
+4. **Random Forests:** Random forests or random decision forests is an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. For classification tasks, the output of the random forest is the class selected by most trees. 
+5. **K Nearest Neighbours:** a non-parametric method that uses the k nearest labelled points to assign a label to a new data point for classification or a predicted target value from the average 
+6. **Linear Learner Algorithm** learns a linear function for regression or a linear threshold function for classification.
+
+Once the best model with the highest AUC is determined the model will then be registered and deployed to an AWS SageMaker endpoint. 
 
 ## Benchmark Model
 
-The benchmark model that I will compare my solution to would be the `BaggingClassifier` produced by [another kaggler](https://www.kaggle.com/code/srushanthbaride2010/customer-churn-prediction-score-0-96000) that achieved an accuracy of 96% accuracy on this dataset.
+The baseline model that I will use to compare my model against will be a basic Linear Learner Model. This will be the minimum performance that the model will have to achieve 
+after optimising the model. The model performance will be evaluated using the AUC score, the reason for this is explained in the next section. 
+
 
 ## Evaluation Metrics
 
-The evaluation metric for this competition is the test accuracy, defined as follows:
+After a quick look at the dataset, I noticed that the dataset was imbalanced. Moreover, for business reasons, the model must be able to predict each class very well, therefore the Area Under the Curve (AUC) score will be used for evaluating the model. Additionally, the decision tree diagram below further justifies why AUC score would be the most relevant metric to use to evaluate the model because we will need probabilities to determine the propensity to churn and both classes are equally important. 
 
-![accuracy_formula](accuracy_formula.png)
+![pick_metric](images/pick_a_metric.png)
+
+[source](https://machinelearningmastery.com/)
+
+
+AUC score has commonly been used for churn prediction analysis as well [8][7].
 
 ## Project Design
 
@@ -111,11 +128,9 @@ The workflow for approaching a solution:
 2. `Features Transformation`: convert variables into features. Standardize/normalize features, apply numerical transformations
 3. `Features Selection`: select relevant features
 4. `Machine Learning Models`: train different models using AutoGluon. Perform hyperparameter
-5. `Evaluation`: evaluate the performance of each strategy, and check possibilities of combining them to extract the best of each one and achieving an optimal model.
+5. `Evaluation`: evaluate the performance of each model, and check possibilities of combining them to achieve an optimal model
 6. `Deployment`: deploy the trained model to an AWS endpoint
-7. `Lambda & Step Functions`: set up a AWS Lambda & Step Function for calling the deployed model.
-8. `Web App`: Create a web app by deploying the model on streamlit or flask.
-
+7. `Lambda & Step Functions`: set up an AWS Lambda & Step Function for calling the deployed model.
 
 ## References
 
